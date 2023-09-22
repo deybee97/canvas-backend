@@ -1,4 +1,5 @@
 const express = require("express")
+// const serverLess = require("serverless-http")
 const path = require("path")
 const profileRouter = require("./routes/profileRoutes")
 const elementRouter = require("./routes/elementsRoutes")
@@ -61,3 +62,8 @@ app.listen(port,()=>{
     console.log(`listening on ${port}`)
 }
 )
+
+// app.use("/.netlify/functions/app",profileRouter)
+// app.use("/.netlify/functions/app",elementRouter)
+
+// module.exports.handler = serverLess
