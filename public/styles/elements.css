@@ -1,0 +1,23 @@
+
+
+/* wall element */
+
+.wall-element::before {
+    /* background-image: url('../assets/wall-element.svg'); */
+    content:'';
+    display: inline-block;
+    background-image: url('../assets/caret-down-solid.svg');
+    width: 10px;
+    height: 20px;
+    margin-right: 10px;
+    position: relative;
+    top: 4px
+
+   
+}
+
+
+.circle{
+    background-color: antiquewhite;
+}
+

@@ -1,0 +1,38 @@
+
+
+.hierarchy-header {
+    color: #007bff;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+ 
+}
+
+.hierarchy-header-container{
+
+    z-index: 1;
+}
+
+#floor-list {
+    color: #525252;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;    
+}
+
+h6 {
+    color: #007bff;;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 100;
+    line-height: normal;
+}
+#asset-options h6{
+    color: #525252;
+    font-size: 14px;
+}

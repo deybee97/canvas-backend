@@ -1,0 +1,106 @@
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/public/apis/profile.js"></script>
+    <script src="/public/utils/create-elements.js"></script>
+    <script src="/public/utils/utils.js"></script>
+    <link rel="stylesheet" type="text/css" href="/public/styles/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="/public/styles/preview.css"/>
+</head>
+<body>
+    <div>
+        <nav class="nav-bar">
+        <div class="logo">
+          <!-- <h1>ICE Tool</h1> -->
+          <img src="/public/assets/ice-logo.jpeg"/>
+        </div>
+        <div class="nav-end">
+          <button class="sign-in-button">Sign in</button>
+        </div>
+      </nav>
+   
+
+      <div class="main-section" id="main-section">
+        <div class="main-view" id="main-view">
+            <iframe class="display-iframe" id="display-iframe"></iframe>
+            <div class="full-view">
+                <div id="cancel-button-div">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+                      <path d="M17.6343 32.3656L32.3656 17.6343" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+                      <path d="M17.6343 17.6343L32.3656 32.3656" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 20 20" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.94832 2.70834C8.30362 2.70834 7.76586 3.20104 7.70956 3.84325C7.59186 5.18598 7.56207 6.53471 7.62029 7.88078C7.55002 7.88549 7.47975 7.8904 7.40949 7.89553L6.16824 7.98601C5.37487 8.04384 4.93136 8.92851 5.35968 9.59876C6.27316 11.0284 7.45021 12.2712 8.82807 13.261L9.32532 13.6182C9.72857 13.9078 10.2716 13.9078 10.6747 13.6182L11.1721 13.261C12.5499 12.2712 13.727 11.0284 14.6404 9.59876C15.0687 8.92851 14.6252 8.04384 13.8319 7.98601L12.5907 7.89553C12.5204 7.8904 12.4501 7.88549 12.3798 7.88078C12.4381 6.53471 12.4082 5.18598 12.2906 3.84324C12.2342 3.20103 11.6965 2.70834 11.0518 2.70834H8.94832ZM8.90132 8.42893C8.80657 6.93959 8.82424 5.44515 8.95424 3.95834H11.0458C11.1759 5.44515 11.1936 6.93959 11.0988 8.42893C11.0882 8.59593 11.145 8.76018 11.2564 8.88501C11.3678 9.00976 11.5247 9.08468 11.6918 9.09284C11.9612 9.10618 12.2306 9.12259 12.4997 9.14226L13.4012 9.20793C12.6016 10.3857 11.6003 11.4143 10.4427 12.2458L10.0001 12.5638L9.55732 12.2458C8.39974 11.4143 7.39852 10.3857 6.59891 9.20793L7.50037 9.14226C7.76953 9.12259 8.03886 9.10618 8.30832 9.09284C8.47541 9.08468 8.63224 9.00976 8.74374 8.88501C8.85516 8.76018 8.91191 8.59593 8.90132 8.42893Z" fill="black"/>
+                        <path d="M4.79169 14.1667C4.79169 13.8215 4.51186 13.5417 4.16669 13.5417C3.82151 13.5417 3.54169 13.8215 3.54169 14.1667V15.8333C3.54169 16.6387 4.1946 17.2917 5.00002 17.2917H15C15.8054 17.2917 16.4584 16.6387 16.4584 15.8333V14.1667C16.4584 13.8215 16.1785 13.5417 15.8334 13.5417C15.4882 13.5417 15.2084 13.8215 15.2084 14.1667V15.8333C15.2084 15.9484 15.1151 16.0417 15 16.0417H5.00002C4.88496 16.0417 4.79169 15.9484 4.79169 15.8333V14.1667Z" fill="black"/>
+                      </svg>
+                  </div>
+                  <div id="full-view-image-div">
+                    <img/>
+                  </div>
+         
+            </div>
+        </div>
+        <div class="side-view">
+            <div class="detail">
+                <div class="element-pictures">
+                    <img/>
+                </div>
+            </div>
+            <div class="main-image">
+                <div>
+
+                </div>
+                
+            </div>
+            <div class="preview-nav">
+                <button class="prev-btn">
+                    Previous
+                </button>
+                <button class="next-btn">
+                    Next
+                </button>
+            </div>
+        </div>
+        
+      </div>
+
+      <div id="element-preview">
+        <div id="element-preview-cancel-btn">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" >
+                <path d="M12 11.2929L5.63606 4.92896L4.92896 5.63606L11.2929 12L4.92896 18.364L5.63606 19.0711L12 12.7071L18.364 19.0711L19.0711 18.364L12.7071 12L19.0711 5.63606L18.364 4.92896L12 11.2929Z" fill="white"/>
+              </svg>
+        </div>
+        <h3 id="detail-header"></h3>
+        <div class="element-pictures">
+            <img src="/public/uploads/ice-logo.jpeg"/>
+        </div>
+        <div id="element-details">
+            <!-- <p>Desc:<span>A goat</span></p>
+            <p>Desc:<span>A goat</span></p>
+            <p>Desc:<span>A goat</span></p>
+            <p>Desc:<span>A goat</span></p> -->
+        </div>
+
+        
+       
+      </div>
+      <div id="element-full-picture">
+        <div id="element-fp-cancel-btn">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" >
+                <path d="M12 11.2929L5.63606 4.92896L4.92896 5.63606L11.2929 12L4.92896 18.364L5.63606 19.0711L12 12.7071L18.364 19.0711L19.0711 18.364L12.7071 12L19.0711 5.63606L18.364 4.92896L12 11.2929Z" fill="white"/>
+              </svg>
+              
+        </div>
+        <img src="/public/uploads/ice-logo.jpeg"/>
+      </div>
+      </div>
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script  src="/public/scripts/preview.js"></script>
+</body>
+</html>

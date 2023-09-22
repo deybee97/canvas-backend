@@ -1,0 +1,571 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  touch-action: none;
+  overflow: hidden;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a{
+  text-decoration: none;
+}
+
+
+
+
+
+.sidebar {
+    width: 250px;
+    background: #D9D9D9;
+ 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hierarchy-pane{
+    /* s */
+  }
+  .asset-pane{
+    /* background-color: #007bff; */
+    height: 20vh;
+    display: flex;
+    /* justify-content: space-between; */
+    flex-direction: column;
+    
+    
+  }
+
+  /* , #custom-content div */
+
+  .thin-line-container, .asset-footer{
+    padding: 10px 30px ;
+    border-top: #000 0.5px solid;
+    border-bottom: #000 0.5px solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+   
+}
+.asset-footer{
+  padding: 10px 10px;
+  position: absolute;
+  /* top:120px; */
+  width: 250px;
+  bottom: 0;
+  background-color: #898787;
+}
+
+  /*common layout*/
+
+  .main {
+    display: flex;
+    flex-direction: row;
+    height: 90%;
+  }
+ 
+  
+
+  
+
+  .sidebar button:focus {
+    outline: none;
+  }
+
+ 
+
+  .top-pane {
+    height: 10%;
+    background-color: #C9C6C6;
+    position: relative;
+    z-index: 1;
+    /* padding: 10px; */
+    width: 100%; /* Adjust the width based on your canvas width */
+  }
+ 
+
+  
+  .main-container {
+    flex-grow: 1;
+    position: relative; /*Added to enable positioning of the slider*/
+    touch-action: none; /* Disable default touch gestures on the container */
+    width: calc(100vw - 200px);
+    /* position: relative;
+    z-index: -1; */
+  }
+
+
+
+  .canvas-container {
+
+    /* flex-grow: 1; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: 100%; */
+    height: 80%;
+    background-color: black;
+    /* position: relative; */
+    overflow: hidden; /* Added to hide the overflow during zooming */
+    /* position: relative; Added to enable positioning of the slider */
+    touch-action: none; /* Disable default touch gestures on the container */
+    /* position: relative;
+    z-index: -1;  */
+
+    
+  }
+
+  .canvas {
+    border: 2px solid #ccc;
+    /* border: none; */
+    width: 500px;
+    height: 300px;
+    margin: 0 auto;
+    
+    /* position: relative; */
+    transform-origin: 0 0; /* Added to set the origin of the transform */
+    touch-action: none; /* Disable default touch gestures on the canvas */
+    overflow: hidden;
+    /* position: relative;
+    z-index: -1; */
+    
+
+  }
+
+
+
+  
+
+  .zoom-slider {
+    /* position: absolute;
+    bottom: 10px;
+    left: 10px; */
+    width: 100px;
+    position: relative;
+    top: 25px;
+    margin:0 20px ;
+  }
+
+  .zoom-slider input[type="range"] {
+    width: 100%;
+  }
+
+  .add-button {
+    /* position: fixed;
+    bottom: 20px;
+    right: 20px; */
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  /* .element {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+  } */
+
+
+  .bottom-settings {
+    background-color: #C9C6C6;
+    height: 10%;
+    display: flex;
+    position: relative;
+    z-index: 1;
+  }
+
+  .slider-container{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .slider{
+    width: 294px;
+    height: 46px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: #EAE9E9;
+
+  }
+  .mode{
+    width:70%;
+    display: flex;
+    justify-content: flex-start;
+    padding: 15px 0;
+  }
+ 
+
+  .nav-bar{
+    height: 80px;
+    padding: 20px;
+    background: rgba(131, 130, 130, 0.81);
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    z-index: 1;
+    /* justify-content: space-around; */
+    width: 100vw;
+  }
+  .frequently-used-asset-container{
+    display: flex;
+    flex-direction: column;
+    max-height: 250px;
+    padding: 10px 0 50px;
+    overflow: scroll;
+  }
+
+  .frequently-used-asset-container  button {
+     text-align: left;
+     padding: 5px 30px;
+     background-color: #D9D9D9;
+     border: none;
+     font-size: 14px;
+     display: flex;
+     align-items: center;
+     transition: font-size 0.3s ease
+  }
+
+  .frequently-used-asset-container button:hover{
+    font-size: 15px;
+    background-color: #d6d4d4;
+ 
+  }
+
+
+  .frequently-used-asset-container svg {
+    margin-right: 10px;
+  }
+
+
+
+  .logo {
+    width: 20%;
+    color: #FFF;
+    font-family: Inter;
+    padding-left: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+  }
+  .logo img{
+    width: inherit;
+    border-radius: inherit;
+   
+  }
+
+  .nav-middle{
+    width: 50%;
+    display: flex;
+  }
+
+  .nav-end{
+    width: 30%;
+    display: flex;
+  }
+
+  .top-pane{
+    display: flex;
+    padding-left: 80px;
+    align-items: center; /* Center the div vertically */
+  }
+  .top-pane-tools{
+    display: flex;
+    justify-content: flex-start;
+    width: 150px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .top-pane-tools svg{
+    border-radius: 100%;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    
+  }
+
+  .top-pane-tools svg:hover{
+    background-color: rgb(214, 207, 207); 
+  }
+
+
+  /*asset-option*/
+  #cancel-button-div{
+
+
+  }
+
+
+  #asset-options{
+    height: 90%;
+    width: 450px;
+    position: absolute;
+    top:0;
+    right: 40px;
+    background-color: #D9D9D9;
+    display: none;
+    padding: 10px 0;
+  
+  }
+
+  
+  #asset-options.profile #color-option{
+    display: none;
+  }
+
+  .scale-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: #007bff; */
+
+  }
+
+  .main-container h6{
+    margin-right: 15px;
+    margin-left: 5px;
+  }
+
+  
+  #asset-options.visibility{
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+
+  }
+
+  .asset-input{
+    justify-content: flex-start;
+  }
+
+  .custom-container{
+   
+    display: flex;
+    flex-direction: column;
+  }
+  .canvas-container .asset-button{
+ 
+  }
+
+  #custom-content{
+
+    flex-grow: 1;
+   
+  }
+ 
+  
+  .profile .custom-container{
+    display: none;
+  }
+  .custom-container{
+    flex-grow: 1;
+  }
+
+
+  .desc-input{
+    border: none;
+    outline: none;
+    background-color: rgb(217, 217, 217);
+    width: 40px;
+    height: 20px;
+  }
+
+
+  
+
+  /*buttons*/
+
+  .asset-button{
+    width: 20px;
+    height: 20px;
+    border: none;
+    font-size: large;
+    background-color: #D9D9D9;
+  }
+
+  .add-button:hover{
+    background-color: #D9D9D9;
+    cursor: pointer;
+  }
+
+  .resize-button, .preview-button{
+
+    border-top-left-radius: 5px ;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: none;
+    padding: 0px 20px;
+    margin-right: 60px;
+   
+  }
+
+  .undo-redo {
+    background: none;
+    border: none;
+    margin: 0 10px;
+    border-radius: 50%;
+  }
+  .undo-redo:hover{
+    background-color: rgb(160, 159, 159);
+  }
+
+  .preview-button{
+    margin-right: 30px;
+  }
+
+  .resize-button:hover, .preview-button:hover{
+    color: rgba(131, 130, 130, 0.81)
+  }
+
+  .sign-in-button{
+    border-top-left-radius: 5px ;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border:  #fff 2px solid;
+    background:none;
+    padding: 0px 30px;
+    margin-right: 60px;
+    color: #FFF;
+  }
+  .sign-in-button:hover{
+    color: #007bff;
+    border-color: #007bff;
+  }
+
+  .light-mode-button, .dark-mode-button{
+    padding: 0 10px;
+    border-top-left-radius: 5px ;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: none;
+  }
+
+  .light-mode-button{
+    background-color: #898787;;
+  }
+  .light-mode-button{
+    background-color: #D9D9D9;
+  }
+
+  #save-button{
+     
+    width: 100%;
+    padding: 10px 0;
+    font-size: large;
+    background-color: #007bff;
+    color: #525252;
+    font-size: 14px;
+  }
+  .profile #save-button{
+    position: absolute; 
+     bottom: 0;
+  }
+
+  #save-button:disabled{
+    background-color:#C9C6C6 ;
+  }
+
+  
+
+
+  /*shapes*/
+
+  .shape-container {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    left: 210px;
+    top: -10px;
+    background-color: #EAE9E9;
+    max-width: 200px;
+    flex-wrap: wrap;
+   
+  }
+  .shape-container.visibility{
+    display: flex;
+  }
+
+  .shape-container > svg {
+
+    width: 33%;
+
+  }
+  .shape-container > svg:hover {
+    border: 1px solid #007bff;
+     width: 33%;
+ 
+   }
+
+  .shape {
+    width: 100px;
+    height: 100px;
+  }
+ 
+
+  /* style targeted classes*/
+
+  .flex{
+    display: flex;
+    
+  }
+  .space-between{
+    justify-content: space-between;
+  }
+
+  .flex-direction-column{
+    flex-direction: column;
+  }
+
+
+  /*id selector*/
+  #image-preview{
+    width: 150px;
+    height: 150px;
+    background-color: #007bff;
+    margin-top: 40px;
+    align-self: center;
+    display: none;
+  }
+
+  #image-preview.visibility{
+    display: block;
+  }
+
+
+  @media screen and (max-width: 900px) {
+     .nav-bar{
+      padding: 0;
+      height: 50px;
+      background-color: #525252;
+     }
+     .nav-end{
+      display: none;
+     }
+     .logo{
+       width: 40px;
+     }
+
+  }
+
+@media screen and (max-height:600px){
+  
+}
+  

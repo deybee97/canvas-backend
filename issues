@@ -1,0 +1,3 @@
+1. Check out for repeated code blocks
+2. localStorage might not be consistent with the backend especially because of network failure. Make sure that the localstorage is consistent
+    the backend. There should be a consolidation when you reload.

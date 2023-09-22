@@ -1,0 +1,328 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    touch-action: none;
+    overflow: hidden;
+  }
+  
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  a{
+    text-decoration: none;
+  }
+
+.main-section {
+    display: flex;
+    height: calc(100vh - 80px);
+    
+    align-items: center;
+    justify-content: center;
+    background-color: #3B3C3C;
+
+}
+
+.main-view{
+    display: flex;
+    width: 70vw ;
+   
+}
+
+.display-iframe{
+    width: 500px;
+    height: 300px;
+    margin: 0 auto;
+    border: none;
+ 
+}
+
+.side-view{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30vw;
+    /* min-width: 200px;  */
+    border-left: 1px solid black;
+    height: inherit;
+    padding: 30px;
+    
+}
+
+.detail{
+   display: flex;
+   /* align-items: center;*/
+   justify-content: center; 
+   height: 40%;
+   border-radius: 20px;
+   /* background-color: aqua; */
+   padding: 10px;
+   
+  
+}
+.detail div {
+  /* background-color: blueviolet; */
+  width: 100%;
+  height: 100%;
+  align-self: center;
+  border-radius: 20px;
+}
+
+.detail-pic{
+    display: flex;
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+} 
+.detail-pic img{
+    max-width:  90%;
+    max-height: 90%;
+    margin: auto;
+}
+
+
+.main-image{
+    display: flex;
+    /* align-items: center;*/
+    justify-content: center; 
+   height: 40%;
+   border-radius: 20px;
+  
+   padding: 10px;
+  
+}
+
+.main-image div {
+    background-color: blueviolet;
+    width: 100%;
+    height: 100%;
+    align-self: center;
+    border-radius: 20px;
+  }
+
+.preview-nav{
+    display: flex;
+    justify-content: space-between;
+    height: 10%;
+    border-radius: 20px;
+
+}
+
+.preview-nav button {
+    width: 40%;
+    border-radius: 20px;
+}
+
+.full-view {
+    position: absolute;
+    left: 0;
+    top: 80px;
+    background-color: white;
+    width: 70vw;
+    height: calc(100vh - 70px);
+
+    z-index: 1;
+    border: 1px black solid;
+    display: none;
+    
+}
+
+
+.full-view.visibility {
+    display: flex;
+    flex-direction: column;
+
+    
+}
+
+.full-view.visibility img{
+   display: flex;
+   max-width: 70%;
+   max-height: 70%;
+}
+#full-view-image-div{
+    height: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cancel-button-div{
+    height: 5%;
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+}
+
+/* .full-view-image{
+  background-color: aqua;
+  height: calc(100vh - 50px);
+  display: flex;
+}
+
+.full-view-image image {
+    margin: 0 auto;
+} */
+
+
+/* element preview */
+
+#element-preview{
+
+    position:absolute;
+    top: calc(60px);
+    left: 2.5vw;
+    background-color: #525252;
+    height: calc(100vh - 70px);
+    width: 95vw;
+    text-align: center;
+    padding: 10px;
+    display: none;
+    flex-direction: column;
+    color: white;
+}
+
+#element-preview-cancel-btn, #element-fp-cancel-btn{
+    background-color: #1867C7;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    position: absolute;
+    right: -5;
+    top: -5;
+    display: flex;
+    justify-content: center; 
+   align-items: center; 
+   z-index: 1;
+    
+    
+}
+
+#element-fp-cancel-btn{
+    right: 5px;
+    top: 5px;
+}
+
+
+
+.element-pictures{
+  /* background-color: aliceblue; */
+  width: 100%;
+  /* flex-grow: 1;  */
+
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.element-pictures img{
+   
+        max-width: 80%; /* Optional: Limits the image's width to the container's width */
+        max-height: 80%;
+        min-width: 80%;
+        /* min-height: 80%; */
+        display: block; /* Removes any default inline spacing */
+        margin:  auto; /*Centers the image horizontally if needed  */
+}
+
+#element-details{
+  padding: 10px;
+  background-color:#3B3C3C;
+  text-align: start;
+  flex-grow: 1;
+
+  
+}
+#element-full-picture{
+    position: absolute;
+    width: 100vw;
+    height: calc(100vh - 50px);
+    top: 50px;
+    background-color: #3B3C3C;
+    z-index: 2;
+    display: none;
+   
+}
+
+#element-full-picture img {
+
+}
+
+
+/* Calculate approximate width and height for a 7.6-inch diagonal */
+@media screen and (max-width: 900px) {
+    /* Your CSS styles for screens around 7.6 inches diagonal go here */
+    /* .main-section {
+        display: none;
+        height: calc(100vh - 80px);
+        align-items: center;
+        justify-content: center;
+        background-color: #3B3C3C;
+    
+    } */
+    .side-view{
+        display: none;
+    }
+   
+    .main-view{
+        width: 100% ;
+    }
+    .main-section{
+        width: 100vw;
+        height: calc(100vh - 50px);
+    }
+
+    #element-preview.visibility{
+        display: flex;
+    }
+    
+   
+    #element-full-picture.visibility{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #element-full-picture img{
+     
+        max-width: 100%; /* Optional: Limits the image's width to the container's width */
+        max-height: 100%;
+        display: block; /* Removes any default inline spacing */
+        margin:  auto; /* Centers the image horizontally if needed */
+    }
+    .full-view.visibility{
+        display: none;
+    }
+
+  }
+
+@media screen and (max-height:600px){
+    .main-view{
+        width: 100%;
+
+    }
+    .main-section{
+    
+
+        width: 100vw;
+        height: 100%;
+    }
+    .side-view{
+        display: none;
+    }
+    .nav-bar{
+        display: none;
+    }
+    .full-view.visibility{
+        display: none;
+    }
+
+}
