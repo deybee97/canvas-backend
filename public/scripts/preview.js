@@ -111,10 +111,10 @@ const init = async() =>{
    let width = window.getComputedStyle(UI.mainView).getPropertyValue("width")
    let height = window.getComputedStyle(UI.mainSection).getPropertyValue("height")
    
- 
-const {profile:cachedProfile, elements:cachedElements}  = await getProfileDataInit(dynamicURL)
 
-const size = (adjustFrame(width,height, profile.frameType? profile.frameSize:"landscape"))
+const {profile:cachedProfile, elements:cachedElements}  = await getProfileDataInit(dynamicURL)
+// console.log(profile,element)
+const size = (adjustFrame(width,height, cachedProfile.frameType? cachedProfile.frameSize:"landscape"))
    
 UI.iframe.style.width = size[0]
 UI.iframe.style.height = size[1]
