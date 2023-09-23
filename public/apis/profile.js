@@ -1,18 +1,19 @@
-
+const baseUrl ="https://canvas-backend.onrender.com/api/v1"
+const localUrl = "http://localhost:3000/api/v1"
 //get profile
 async function getProfileDataInit(dynamicURL){
     //make a request to database to get profile
     
     try {
   
-      const resProfile= await axios.get(`https://canvas-backend.onrender.com/api/v1/profile?profileId=${dynamicURL}`,
+      const resProfile= await axios.get(`${baseUrl}/profile?profileId=${dynamicURL}`,
         {
           'Content-Type':'application/json'
         }
       )
   
       
-      const resElements = await axios.get(`https://canvas-backend.onrender.com/api/v1/elements?profileId=${dynamicURL}`)
+      const resElements = await axios.get(`${baseUrl}/elements?profileId=${dynamicURL}`)
       
   
       const response = {
@@ -32,7 +33,7 @@ async function getProfileDataInit(dynamicURL){
 
   const deleteElementProperty = async(dynamicURL, selectedElementId, deletedElementPropId)=>{
     try{
-        const res = await axios.put(`http://localhost:3000/api/v1/elements/settings?profileId=${dynamicURL}&elementId=${selectedElementId}`,
+        const res = await axios.put(`${baseUrl}/elements/settings?profileId=${dynamicURL}&elementId=${selectedElementId}`,
     {
       deletedElementPropId
     },
