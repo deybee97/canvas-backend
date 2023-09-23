@@ -66,7 +66,13 @@ UI.fullViewCancelButton.addEventListener('click',()=>{
 })
 
 UI.elementPreviewXbtn.addEventListener("click",()=>{
-  UI.elementPreview.classList.remove("visibility")
+  UI.elementPreview.classList.remove("active")
+
+  setTimeout(()=>{
+    UI.elementPreview.classList.remove("visibility")
+  },300)
+  
+ 
 })
 
 
@@ -193,6 +199,11 @@ if(cachedProfile && cachedElements){
       //  UI.detailDiv.appendChild(imageElement);
       console.log(UI.elementPreview)
         UI.elementPreview.classList.add("visibility")
+
+        setTimeout(()=>{
+          UI.elementPreview.classList.add("active")
+        },100)
+       
 
         //add element name to header 
         console.log(UI.detailHeader)
