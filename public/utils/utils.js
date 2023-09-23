@@ -72,7 +72,7 @@ function rgbStringToHex(rgbString) {
         const adjustment = (3*adjSW - 5*adjSH)/3 >= 0 ? adjSW -= (3*adjSW - 5*adjSH)/3: adjSH-=(5*adjSH - 3*adjSW)/5
     }
    
-    const elemAdjustment = ((((adjSW - 500) /500)*100)+100)/100
+    const elemAdjustment = frameType === "landscape" ?((((adjSW - 500) /500)*100)+100)/100: ((((adjSH - 500) /500)*100)+100)/100
    
     console.log(adjSW,adjSH)
     return [Math.floor(adjSW),Math.floor(adjSH), elemAdjustment]

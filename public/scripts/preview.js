@@ -113,8 +113,9 @@ const init = async() =>{
    
 
 const {profile:cachedProfile, elements:cachedElements}  = await getProfileDataInit(dynamicURL)
-// console.log(profile,element)
-const size = (adjustFrame(width,height, cachedProfile.frameType? cachedProfile.frameSize:"landscape"))
+console.log(cachedProfile)
+
+const size = (adjustFrame(width,height, cachedProfile.frameSize? cachedProfile.frameSize:"landscape"))
    
 UI.iframe.style.width = size[0]
 UI.iframe.style.height = size[1]
