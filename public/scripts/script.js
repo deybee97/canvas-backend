@@ -216,6 +216,19 @@ previewBtn.addEventListener('click',()=>{
 })
 
 
+resizeBtn.addEventListener('click',()=>{
+
+  const iframeWidth = iframe.offsetWidth
+
+  const iframeHeight = iframe.offsetHeight
+
+  console.log(iframeHeight, iframeWidth)
+
+  iframe.style.width = iframeHeight.toString()+"px"
+  iframe.style.height = iframeWidth.toString()+"px"
+})
+
+
 Array.from(addElementButton).forEach((element)=> element.addEventListener('click', (event)=>{
 
   // this id comes from the id of the button you use to add the element element.id === elementType

@@ -27,7 +27,7 @@ const customContent = document.getElementById("custom-content")
 const titleInput = document.getElementsByClassName("title-input")
 const assetInput = document.getElementsByClassName("asset-input")
 
-
+const resizeBtn = document.getElementById("resize-button")
 // save pane elements so it can be easily manipulated
 window.paneElement =[]
 
