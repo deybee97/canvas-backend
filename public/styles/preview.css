@@ -304,7 +304,7 @@ body {
 
   }
 
-@media screen and (max-height:600px){
+@media screen and (max-height:400px){
     .main-view{
         width: 100%;
 
