@@ -5,14 +5,14 @@ async function getProfileDataInit(dynamicURL){
     
     try {
   
-      const resProfile= await axios.get(`http://localhost:3000/api/v1/profile?profileId=${dynamicURL}`,
+      const resProfile= await axios.get(`https://canvas-backend.onrender.com/api/v1/profile?profileId=${dynamicURL}`,
         {
           'Content-Type':'application/json'
         }
       )
   
       
-      const resElements = await axios.get(`http://localhost:3000/api/v1/elements?profileId=${dynamicURL}`)
+      const resElements = await axios.get(`https://canvas-backend.onrender.com/api/v1/elements?profileId=${dynamicURL}`)
       
   
       const response = {
