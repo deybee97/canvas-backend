@@ -187,6 +187,7 @@ body {
     display: none;
     flex-direction: column;
     color: white;
+  
 }
 
 #element-preview-cancel-btn, #element-fp-cancel-btn{
@@ -239,7 +240,7 @@ body {
   background-color:#3B3C3C;
   text-align: start;
   flex-grow: 1;
-
+  font-size: 150%;
   
 }
 #element-full-picture{
@@ -283,6 +284,14 @@ body {
 
     #element-preview.visibility{
         display: flex;
+        opacity: 0; /* Start with opacity set to 0 */
+        transition: opacity 0.3s ease; 
+        
+    }
+
+    #element-preview.visibility.active {
+        opacity: 1; /* When the "active" class is added, set opacity to 1 */
+        /* transition: opacity 0.3s ease;  */
     }
     
    
