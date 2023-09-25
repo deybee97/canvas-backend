@@ -1,14 +1,26 @@
  const path = require('path');
 // const { StatusCodes } = require('http-status-codes');
 // const CustomError = require('../errors');
-// const cloudinary = require('cloudinary').v2;
-// const fs = require('fs');
+
+const {v2: cloudinary} = require('cloudinary');
+const fs = require('fs');
+require("dotenv").config()
+
+
+          
+cloudinary.config({ 
+  cloud_name: process.env.CLOUD_NAME, 
+  api_key: process.env.CLOUD_API_KEY, 
+  api_secret: process.env.CLOUD_API_SECRET
+});
+
 
 const uploadProductImageLocal = async (req, res) => {
   if (!req.files) {
     throw new CustomError.BadRequestError('No File Uploaded');
   }
   const productImage = req.files.image;
+  console.log(productImage)
   if (!productImage.mimetype.startsWith('image')) {
     throw new CustomError.BadRequestError('Please Upload Image');
   }
@@ -26,22 +38,22 @@ const uploadProductImageLocal = async (req, res) => {
     .json({ image: { src: `/uploads/${productImage.name}` } });
 };
 
-// const uploadProductImage = async (req, res) => {
-//   const result = await cloudinary.uploader.upload(
-//     req.files.image.tempFilePath,
-//     {
-//       use_filename: true,
-//       folder: 'file-upload',
-//     }
-//   );
-//   fs.unlinkSync(req.files.image.tempFilePath);
-//   return res.status(StatusCodes.OK).json({ image: { src: result.secure_url } });
-// };
+const uploadProductImage = async (req, res) => {
+  const result = await cloudinary.uploader.upload(
+    req.files.image.tempFilePath,
+    {
+      use_filename: true,
+      folder: 'file-upload',
+    }
+  );
 
-// module.exports = {
-//   uploadProductImage,
-// };
+  console.log(result)
+  fs.unlinkSync(req.files.image.tempFilePath);
+  return res.status(200).json({ image: { src: result.secure_url } });
+};
+
 
 module.exports = {
     uploadProductImageLocal,
+    uploadProductImage,
 }
