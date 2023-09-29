@@ -4,3 +4,6 @@ serviceAccountKey.json
 # Local Netlify folder
 .netlify
 functions
+.DS_Store
+tmp/
+public/uploads

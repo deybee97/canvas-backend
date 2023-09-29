@@ -6,13 +6,16 @@ const elementRouter = require("./routes/elementsRoutes")
 const fileUpload = require('express-fileupload');
 const cors = require("cors")
 const {getRecentProfile} = require('./controllers/profile');
+const errorHandlerMiddleware = require("./middleware/error-handler");
+const notFound = require("./middleware/not-found");
 require("dotenv").config()
+require('express-async-errors');
 
 const app = express()
 
 app.use(cors(
     {
-      origin:'https://canvas-backend.onrender.com/',
+      origin:'http://localhost:3000',
   
   }))
 
@@ -57,13 +60,11 @@ app.get('/profiles',async(req,res)=>{
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
+app.use(notFound)
+app.use(errorHandlerMiddleware)
 
 app.listen(port,()=>{
     console.log(`listening on ${port}`)
 }
 )
 
-// app.use("/.netlify/functions/app",profileRouter)
-// app.use("/.netlify/functions/app",elementRouter)
-
-// module.exports.handler = serverLess

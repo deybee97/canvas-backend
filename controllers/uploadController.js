@@ -1,6 +1,6 @@
  const path = require('path');
-// const { StatusCodes } = require('http-status-codes');
-// const CustomError = require('../errors');
+const { StatusCodes } = require('http-status-codes');
+const CustomError = require('../errors');
 
 const {v2: cloudinary} = require('cloudinary');
 const fs = require('fs');
@@ -39,7 +39,7 @@ const uploadProductImageLocal = async (req, res) => {
 };
 
 const uploadProductImage = async (req, res) => {
-  const result = await cloudinary.uploader.upload(
+ try{ const result = await cloudinary.uploader.upload(
     req.files.image.tempFilePath,
     {
       use_filename: true,
@@ -50,6 +50,11 @@ const uploadProductImage = async (req, res) => {
   console.log(result)
   fs.unlinkSync(req.files.image.tempFilePath);
   return res.status(200).json({ image: { src: result.secure_url } });
+}
+catch(e){
+   throw new CustomError.CustomAPIError()
+}
+
 };
 
 
