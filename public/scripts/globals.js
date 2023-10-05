@@ -57,7 +57,9 @@ const pathname = window.location.pathname; // Returns "/profile/dynamic-url"
 
 // Split the pathname to get the dynamic URL parameter
 const parts = pathname.split("/"); // Splits into ["", "profile", "dynamic-url"]
-const dynamicURL = parts[2]; 
+
+window.dynamicURL = parts[2]; 
+
 
 let cachedProfile = localStorage.getItem('profile')? JSON.parse(localStorage.getItem('profile')) : null
 

@@ -11,36 +11,20 @@ createProfileBtn.addEventListener("click",()=>{
     // profileNameContainer.classList.add("visibility")
 })
 
+
 confrimCreateProfileBtn.addEventListener("click",async()=>{
+
     const id = generateRandomId(12)
-try {
-    const res = await axios.post(`${url}api/v1/profile/`,
-    {
-      id,
-      profileName: profileName.value,
-    
-    },
-   {
-    headers:{
-     'Content-Type':'application/json'
+    const response = await createProfile(profileName.value,id)
+     console.log(response)
+      //redirect to profile/dynamic.page
+      if (response.status === 200) {
+        // Redirect to profile/dynamic.page
+        window.location.href = `/profile/${id}`;
+    } else {
+        console.log("Error creating profile.");
     }
-   })
 
-   console.log(res)
-    
-   //redirect to profile/dynamic.page
-   if (res.status === 200) {
-    // Redirect to profile/dynamic.page
-    window.location.href = `/profile/${id}`;
-} else {
-    console.log("Error creating profile.");
-}
-} catch (error) {
-    console.log(error)
-}
-  
-
-      
 })
 
 Array.from(profileCards).forEach(profileCard=>{

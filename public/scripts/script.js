@@ -1,8 +1,11 @@
 
 // Loop through the selected SVG elements
 svgElements.forEach((svgElement) => {
+
+
   // Do something with each SVG element
   svgElement.addEventListener('click',async()=>{
+   
         const element = await editToolFunctions(svgElement.id, iframeDoc)
         console.log(element)
         if(svgElement.id === "copy"){
@@ -55,19 +58,8 @@ window.handleSquareMouseDown = (event)=> {
             element.left = selectedSquare.style.left
             element.top = selectedSquare.style.top
 
-             try {
-               const res = await axios.put(`http://localhost:3000/api/v1/elements/position?profileId=${encodeURIComponent(dynamicURL)}&elementId=${encodeURI(element.id)}`,
-                 {
-                  left:element.left,
-                  top:element.top
-                 },
-               {
-                'Content-Type':'application/json'
-              })
-              console.log(res)
-             } catch (error) {
-              console.log(error)
-             }
+            await updateElementPosition(dynamicURL,element)
+
         }
     })
 
@@ -167,18 +159,9 @@ if(profile){
 
   localStorage.setItem("addedElements", JSON.stringify(addedElements))
 
-  try {
-    // add element to database
-   const res = await axios.post(`http://localhost:3000/api/v1/elements?profileId=${dynamicURL}&elementId=${element.id}`,
-     elementData,
-     {
-      'Content-Type':'application/json'
-    }
-    )
-    console.log(res)
-  } catch (error) {
-    console.log(error)
-  }
+  await createElement(dynamicURL,elementData)
+
+
 
 }
 }

@@ -101,9 +101,9 @@ assetOptionsCancelButton.addEventListener("click",  resetOptionPane)
     
     //check if its profile or not to determine with api end point to call
     if(selectedElementType === "profile"){
-      url =`http://localhost:3000/api/v1/profile/uploads`
+      url =`/profile/uploads`
     }else{
-      url = `http://localhost:3000/api/v1/elements/uploads`
+      url = `/elements/uploads`
     }
 
     Array.from(selectedFiles).forEach(selectedFile => {
@@ -146,12 +146,9 @@ assetOptionsCancelButton.addEventListener("click",  resetOptionPane)
     // reader.readAsDataURL(file);
     const formData = new FormData();
     formData.append('image',file)
-    try {
-     const {data:{image:{src}}} = await axios.post(`${url}`,formData,{
-      headers:{
-       'Content-Type':'multipart/form-data'
-      }
-     })
+
+      const src = await uploadImage(url, formData)
+    
 
       populateImagePreview(src, imagePreview)
       if(selectedElementType === "profile"){
@@ -161,10 +158,7 @@ assetOptionsCancelButton.addEventListener("click",  resetOptionPane)
          settings.singularChange.imageUrl.push(src)
       }
       callback(src)
-    } catch (error) { 
-  
-     console.log(error);
-    }
+   
 
   }
 
@@ -183,31 +177,12 @@ assetOptionsCancelButton.addEventListener("click",  resetOptionPane)
 
        localStorage.setItem('profile',JSON.stringify(profile))
 
-      
-      
-
        //save settings to database
-       try {
-        const res = await axios.put(`http://localhost:3000/api/v1/profile/settings?profileId=${dynamicURL}`,
-        {
-         ...settings.singularChange
-        },
-         {
-           "Content-Type":"application/json"
-         }
-        )
-        console.log(res)
-        //change the elements in the iframe and in the pane
-
-
-      } catch (error) {
        
-      }
+       await updateProfile(dynamicURL,settings)
 
-      
      }else{
 
-       
       let newChanges = {
       
       }
@@ -270,21 +245,9 @@ assetOptionsCancelButton.addEventListener("click",  resetOptionPane)
        localStorage.setItem('addedElements',JSON.stringify(addedElements))
     
        //save settings to database
-       try {
-         const res = await axios.put(`http://localhost:3000/api/v1/elements/settings?profileId=${dynamicURL}&elementId=${selectedElementId}`,
-         {
-          ...settings.singularChange,
-          customSetting: settings.customChange
-         },
-          {
-            "Content-Type":"application/json"
-          }
-         )
-         console.log(res)
-        
-       } catch (error) {
-        
-       }
+
+       await updateElement(dynamicURL,selectedElementId,settings)
+      
      }
 
      resetOptionPane()

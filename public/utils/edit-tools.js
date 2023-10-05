@@ -31,13 +31,9 @@ async function handleDelete () {
          
        console.log(window.addedElements.length)
        localStorage.setItem("addedElements", JSON.stringify(window.addedElements))
-       
-      try {
-        const res = await axios.delete(`http://localhost:3000/api/v1/elements?profileId=${window.dynamicURL}&elementId=${window.prevSelected.id}`)
-        console.log(res)
-      } catch (error) {
-        
-      }
+       console.log(window.dynamicURL, window.prevSelected.id)
+       await deleteElement(window.dynamicURL,window.prevSelected.id)
+     
     }
 }
 
@@ -69,12 +65,9 @@ async function handleCopy(){
 
     try {
         // add element to database
-       const res = await axios.post(`http://localhost:3000/api/v1/elements?profileId=${window.dynamicURL}&elementId=${element.id}`,
-         newElement,
-         {
-          'Content-Type':'application/json'
-        }
-        )
+
+        await createElement(window.dynamicURL,newElement)
+    
         iframeDoc.body.appendChild(element)
         element.addEventListener('mousedown', window.handleSquareMouseDown);
         console.log(element)
