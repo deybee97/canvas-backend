@@ -79,6 +79,7 @@ async function getProfileDataInit(dynamicURL){
     }
 
     const uploadImage = async(url,formData)=>{
+      console.log(url)
       try {
         const {data:{image:{src}}} = await axios.post(`${baseUrl + url}`,formData,{
          headers:{
@@ -89,7 +90,7 @@ async function getProfileDataInit(dynamicURL){
         return src
   
        } catch (error) { 
-     
+        
         console.log(error);
        }
     }

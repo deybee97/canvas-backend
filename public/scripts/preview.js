@@ -19,8 +19,7 @@ const UI = {
     fullViewImage: document.querySelector(".full-view img"),
     fullImage: document.querySelector("#element-full-picture img"),
     iframe : document.getElementById("display-iframe"),
-   
-    mainImageDiv : document.querySelector(".main-image div"),
+
     prevBtn : document.querySelector(".prev-btn"),
     nextBtn : document.querySelector(".next-btn"),
     
@@ -32,7 +31,7 @@ const UI = {
     elementPreview: document.getElementById("element-preview"),
     elementPreviewXbtn: document.getElementById("element-preview-cancel-btn"),
     elemenFullPxXbtna: document.getElementById("element-fp-cancel-btn"),
-    elementDetailsContainer : document.getElementById("element-details"),
+    elementDetailsContainer : document.querySelectorAll(".element-details div"),
     detailHeader : document.getElementById("detail-header"),
 }
 
@@ -145,7 +144,7 @@ if(cachedProfile?.imageUrl){
     image.style.objectPosition = 'center';
     iframeDoc.body.appendChild(image)
 
-    UI.mainImageDiv.appendChild(image.cloneNode())
+    
 
   }
 
@@ -213,18 +212,22 @@ if(cachedProfile && cachedElements){
         UI.detailHeader.innerText = elem.name
 
         //add element details
-        UI.elementDetailsContainer.innerHTML = ""
-         const elementCustomSetting = elem.customSetting
-        if(elementCustomSetting){
-           for(let key in elementCustomSetting){
-             if(elementCustomSetting.hasOwnProperty(key)){
-              console.log(`key ${key} and ${elementCustomSetting[key]}`)
-               const paragraph = document.createElement("p")
-               paragraph.innerText = `${elementCustomSetting[key].titleInput} : ${elementCustomSetting[key].valueInput}`
-               UI.elementDetailsContainer.appendChild(paragraph)
+        // UI.elementDetailsContainer.innerHTML = ""
+        UI.elementDetailsContainer.forEach(edc=>{
+          edc.innerHTML = ""
+          const elementCustomSetting = elem.customSetting
+          if(elementCustomSetting){
+             for(let key in elementCustomSetting){
+               if(elementCustomSetting.hasOwnProperty(key)){
+                console.log(`key ${key} and ${elementCustomSetting[key]}`)
+                 const paragraph = document.createElement("p")
+                 paragraph.innerText = `${elementCustomSetting[key].titleInput} : ${elementCustomSetting[key].valueInput}`
+                 edc.appendChild(paragraph)
+               }
              }
-           }
-        }
+          }
+        })
+        
 
 
        })
